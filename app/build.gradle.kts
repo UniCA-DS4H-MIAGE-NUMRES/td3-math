@@ -2,16 +2,19 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
+    id("kotlin-kapt")
+
 }
 
 android {
-    namespace = "com.example.pizapp"
+    namespace = "fr.unica.miage.vasseur.pizzapp"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.pizapp"
-        minSdk = 33
-        targetSdk = 35
+        applicationId = "fr.unica.miage.vasseur.pizzapp"
+        minSdk = 29
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -40,7 +43,8 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -56,4 +60,9 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
+
 }
